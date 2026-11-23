@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VanaRaksha AI | Wildlife Alert System</title>
+  <link rel="stylesheet" href="style.css">
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+</head>
+<body>
+  <header class="topbar">
+    <h2>🐘 VanaRaksha AI</h2>
+    <div class="language-area">
+  <label for="languageSelect">🌐 Language:</label>
+  <select id="languageSelect">
+    <option value="en">English</option>
+    <option value="kn">ಕನ್ನಡ</option>
+    <option value="hi">हिन्दी</option>
+  </select>
+</div>
+    
+
+  <main class="container">
+    <section class="hero">
+      <p class="tag">WILDLIFE EARLY WARNING SYSTEM</p>
+      <h1>Protect Farms.<br><span>Protect Wildlife.</span></h1>
+      <p>Smart monitoring dashboard for wildlife alerts and farm safety.</p>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h3>📷 Upload Farm Photo</h3>
+        <p>Choose an image to preview.</p>
+        <input type="file" id="photoInput" accept="image/*">
+        <div class="photo-container">
+    <div class="photo-wrapper">
+    <img id="photoPreview" alt="Farm photo preview">
+    <canvas id="detectionCanvas"></canvas>
+</div>
+    <canvas id="detectionCanvas"></canvas>
+</div>
+
+<p id="photoStatus">No photo selected.</p>
+
+<button id="detectButton" disabled>
+  🐘 Analyze Farm Photo with AI
+</button>
+
+<p id="detectionStatus">
+  Upload a farm photo to begin AI analysis.
+</p>
+      </div>
+
+      <div class="panel">
+        <h3>🔊 Acoustic Monitoring</h3>
+        <p>Test the alert sound system.</p>
+        <button id="soundButton">Test Siren</button>
+        <p id="soundStatus">Siren is inactive.</p>
+        <hr>
+
+<h4>🎙️ Wildlife Sound Analysis</h4>
+
+<p>Upload a field recording for acoustic analysis.</p>
+
+<input
+    type="file"
+    id="audioInput"
+    accept="audio/*"
+>
+
+<audio
+    id="audioPlayer"
+    controls
+    style="width:100%; margin-top:15px; display:none;"
+></audio>
+<div class="waveform-container">
+    <h4>📊 Acoustic Waveform</h4>
+    <canvas id="audioWaveform"></canvas>
+</div>
+
+<button id="analyzeAudioButton" disabled>
+    🔍 Analyze Wildlife Sound
+</button>
+
+<div id="audioAnalysisResult">
+    Upload an audio recording to begin.
+</div>
+<div id="acousticRisk" class="risk-card">
+    <h4>🛡️ Acoustic Risk Status</h4>
+    <p id="riskLevel">Waiting for audio analysis...</p>
+</div>
+      </div>
+
+      <div class="panel alert-panel">
+        <h3>🚨 Wildlife Alert</h3>
+        <p id="alertStatus">No active alerts.</p>
+        <button id="alertButton">Test Wildlife Alert</button>
+      </div>
+    </section>
+
+    <section class="panel map-panel">
+  <h3>🗺️ Farm Safety Map</h3>
+  <p>Click on the map to select your farm location.</p>
+
+  <div id="map"></div>
+
+  <p id="mapStatus">Select your farm location on the map.</p>
+</section>
+
+<section class="panel notification-panel">
+  <h3>📢 Emergency Notification Center</h3>
+  <p>Prepare a wildlife warning for farmers.</p>
+
+  <label for="farmerPhone">Farmer mobile number:</label>
+  <input
+    type="tel"
+    id="farmerPhone"
+    placeholder="Enter mobile number"
+  >
+
+  <button id="generateAlert">
+    Generate Emergency Message
+  </button>
+
+  <div id="notificationPreview">
+    Your emergency message will appear here.
+  </div>
+
+  <button id="copyAlert">Copy Message</button>
+  <button id="whatsappAlert">Share on WhatsApp</button>
+  <button id="smsAlert">
+    📩 Send Emergency SMS
+</button>
+
+  <p id="notificationStatus"></p>
+</section>
+
+<footer>VanaRaksha AI • Prototype demonstration</footer>
+  </main>
+
+<!-- SMART COMBINED WILDLIFE ALERT -->
+
+<section class="panel" id="combinedAlertPanel">
+
+    <h2>🚨 Smart Wildlife Alert Dashboard</h2>
+
+    <p>Combined monitoring of farm safety indicators.</p>
+
+    <div class="combined-status">
+        <h3>🐘 Vision Detection</h3>
+        <p id="visionSummary">Waiting for photo analysis...</p>
+    </div>
+
+    <div class="combined-status">
+        <h3>🎙️ Acoustic Monitoring</h3>
+        <p id="soundSummary">Waiting for audio analysis...</p>
+    </div>
+
+    <div class="combined-status">
+        <h3>📍 Farm Safety</h3>
+        <p id="locationSummary">Select your farm location on the map.</p>
+    </div>
+
+    <button id="combinedCheckButton">
+        🔍 Generate Combined Report
+    </button>
+
+    <div id="combinedResult">
+        Combined report not generated yet.
+    </div>
+
+</section>
+
+<!-- REQUIRED LIBRARIES -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+
+<!-- MAIN JAVASCRIPT -->
+
+<script src="app.js"></script>
+
+</body>
+</html>
